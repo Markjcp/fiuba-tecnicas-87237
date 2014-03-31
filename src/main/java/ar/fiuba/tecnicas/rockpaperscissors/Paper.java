@@ -1,17 +1,24 @@
 package ar.fiuba.tecnicas.rockpaperscissors;
 
-public class Paper {
+import java.util.ArrayList;
+import java.util.List;
 
-	public Scissors vs(Scissors scissors) {
-		return scissors;
+public class Paper implements Move{
+	
+	private List<Move> winners=new ArrayList<Move>();
+	
+	private void loadWinners(){
+		this.winners.add(new Scissors());
 	}
-
-	public Paper vs(Rock rock) {
-		return this;
+	
+	public Move vs(Move move) {
+		loadWinners();
+		return Referee.decideWinner(this, move, winners);
 	}
-
-	public Paper vs(Paper paper) {
-		return this;
+	
+	@Override
+	public boolean equals(Object object){
+		return object instanceof Paper;
 	}
 
 }
