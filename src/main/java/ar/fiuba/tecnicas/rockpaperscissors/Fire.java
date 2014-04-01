@@ -3,13 +3,12 @@ package ar.fiuba.tecnicas.rockpaperscissors;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Scissors implements Move {
-
-	private List<Move> winners = new ArrayList<Move>();
+public class Fire implements Move {
+	
+private List<Move> winners = new ArrayList<Move>();
 	
 	private void loadWinners(){
 		this.winners.add(new Rock());
-		this.winners.add(new Fire());
 	}
 
 	public Move vs(Move move) {
@@ -19,6 +18,7 @@ public class Scissors implements Move {
 	
 	@Override
 	public boolean equals(Object object){
-		return object instanceof Scissors;
+		return object instanceof Fire;
 	}
+
 }

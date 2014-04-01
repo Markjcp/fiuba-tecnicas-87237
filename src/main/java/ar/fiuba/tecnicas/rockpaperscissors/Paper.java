@@ -9,6 +9,7 @@ public class Paper implements Move{
 	
 	private void loadWinners(){
 		this.winners.add(new Scissors());
+		this.winners.add(new Fire());
 	}
 	
 	public Move vs(Move move) {

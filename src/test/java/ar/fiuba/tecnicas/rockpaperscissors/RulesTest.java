@@ -10,6 +10,7 @@ public class RulesTest {
     private Move rock = new Rock();
     private Move paper = new Paper();
     private Move scissors = new Scissors();
+    private Move fire = new Fire();
 
     @Test
     public void rockBeatsScissors() {
@@ -55,4 +56,25 @@ public class RulesTest {
     public void scissorsTieWithScissors() {
         assertEquals(scissors, scissors.vs(scissors));
     }
+    
+    @Test
+    public void fireBeatsPaper(){
+    	assertEquals(fire, fire.vs(paper));
+    }
+    
+    @Test
+    public void fireBeatsScissors(){
+    	assertEquals(fire, fire.vs(scissors));
+    }
+    
+    @Test 
+    public void fireTieWithFire(){
+    	assertEquals(fire, fire.vs(fire));
+    }
+    
+    @Test
+    public void rockBeatsFire(){
+    	assertEquals(rock, fire.vs(rock));
+    }   
+    
 }
