@@ -1,16 +1,33 @@
 package ar.fiuba.tecnicas.rockpaperscissors;
 
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("classpath:applicationContext.xml")
 public class RulesTest {
+		
+	@Autowired
+	@Qualifier("rock")
+	private Move rock;
 
-    private Move rock = new Rock();
-    private Move paper = new Paper();
-    private Move scissors = new Scissors();
-    private Move fire = new Fire();
+	@Autowired
+	@Qualifier("paper")
+    private Move paper;
+	
+	@Autowired
+	@Qualifier("scissors")
+    private Move scissors;
+	
+	@Autowired
+	@Qualifier("fire")
+    private Move fire;
 
     @Test
     public void rockBeatsScissors() {
@@ -75,6 +92,6 @@ public class RulesTest {
     @Test
     public void rockBeatsFire(){
     	assertEquals(rock, fire.vs(rock));
-    }   
-    
+    }
+ 
 }

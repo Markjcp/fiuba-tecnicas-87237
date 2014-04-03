@@ -1,17 +1,43 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context-4.0.xsd">
-	
+
 	<context:annotation-config />
- 
+
+	<bean id="scissors" class="ar.fiuba.tecnicas.rockpaperscissors.Scissors">
+		<property name="winners">
+			<list value-type="ar.fiuba.tecnicas.rockpaperscissors.Move">
+				<ref bean="rock" />
+				<ref bean="fire" />
+			</list>
+		</property>
+	</bean>
+
 	<bean id="rock" class="ar.fiuba.tecnicas.rockpaperscissors.Rock">
+		<property name="winners">
+			<list value-type="ar.fiuba.tecnicas.rockpaperscissors.Move">
+				<ref bean="paper" />
+			</list>
+		</property>
 	</bean>
-	
+
 	<bean id="paper" class="ar.fiuba.tecnicas.rockpaperscissors.Paper">
+		<property name="winners">
+			<list value-type="ar.fiuba.tecnicas.rockpaperscissors.Move">
+				<ref bean="scissors" />
+				<ref bean="fire" />
+			</list>
+		</property>
 	</bean>
- 
+
+	<bean id="fire" class="ar.fiuba.tecnicas.rockpaperscissors.Fire">
+		<property name="winners">
+			<list value-type="ar.fiuba.tecnicas.rockpaperscissors.Move">
+				<ref bean="rock" />
+			</list>
+		</property>
+	</bean>
 </beans>
